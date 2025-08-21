@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGE UNIVERSITY BBA SEMESTER FIRST RESULT</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://files.catbox.moe/hqs2hn.png'); /* Use your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            flex-direction: column;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            height: 70px;
+            margin-right: 20px;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: rainbow 5s infinite alternate;
+        }
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            16% { color: #ff7f00; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            66% { color: #0000ff; }
+            83% { color: #4b0082; }
+            100% { color: #8f00ff; }
+        }
+        input::placeholder {
+            color: #eee;
+        }
+        input {
+            padding: 15px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+        button {
+            padding: 15px 35px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #details {
+            margin-top: 40px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #details p {
+            margin: 15px 0;
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        #details strong {
+            color: #fff;
+            font-weight: bold;
+        }
+        #error {
+            color: #ffdddd;
+            margin-top: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://files.catbox.moe/e0xonj.png" alt="SAGE University Logo">
+        <h2>SAGE UNIVERSITY<br>BBA SEMESTER FIRST RESULT</h2>
+    </div>
+
+    <input type="text" id="mobileInput" placeholder="Enter Mobile Number">
+    <button onclick="showDetails()">Search</button>
+    <div id="details"></div>
+    <div id="error"></div>
+
+    <script>
+        // Sample Data - इसे आप अपनी डिटेल्स के साथ बदल दें।
+        const students = [
+            { name:  "Nayan Sahu", mobile: "6264646649", rollNumber: "BBA/2023/101", result: "Pass", percentage: "85%" },
+            { name: "ABHI", mobile: "7389468115", rollNumber: "BBA/2023/102", result: "Fail", percentage: "22%" },
+            { name: "Aditya ", mobile: "6260867574", rollNumber: "BBA/2023/103", result: "Pass", percentage: "45%" },
+             { name:  "JAAT SANJAY", mobile: "7852058218", rollNumber: "BBA/2023/181", result: "Pass", percentage: "95%" },
+            { name: "NANDANI", mobile: "9826564101", rollNumber: "BBA/2023/402", result: "Pass", percentage: "92%" },
+            { name: "Pinki", mobile: "9617621512", rollNumber: "BBA/2023/003", result: "Fail", percentage: "00%" },
+             { name:  "Arun", mobile: "6264330822", rollNumber: "BBA/2023/101", result: "Pass", percentage: "100%" },
+            { name: "Prem Bihari", mobile: "9534049429", rollNumber: "BBA/2023/902", result: "Pass", percentage: "100%" },
+            { name: "Harshita", mobile: "9617815689", rollNumber: "BBA/2023/003", result: "Fail", percentage: "-100%" },
+            // और भी entries यहां add करें
+        ];
+
+        function showDetails() {
+            const inputMobile = document.getElementById('mobileInput').value.trim();
+            const detailsDiv = document.getElementById('details');
+            const errorDiv = document.getElementById('error');
+            detailsDiv.innerHTML = '';
+            errorDiv.innerHTML = '';
+
+            const student = students.find(s => s.mobile === inputMobile);
+
+            if (student) {
+                detailsDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${student.name}</p>
+                    <p><strong>Roll No.:</strong> ${student.rollNumber}</p>
+                    <p><strong>Result:</strong> ${student.result}</p>
+                    <p><strong>Percentage:</strong> ${student.percentage}</p>
+                `;
+            } else {
+                errorDiv.innerText = "Student not found. Please check the mobile number.";
+            }
+        }
+    </script>
+</body>
+</html>
